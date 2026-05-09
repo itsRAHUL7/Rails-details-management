@@ -1,0 +1,49 @@
+
+
+<% content_for :title, "Details" %>
+
+<h1>Details</h1>
+
+<% if user_signed_in? %>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th>  </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @details.each do |detail| %>
+      <tr>
+        <td>
+        <%= link_to detail.full_name %>
+        </td>
+        <td><%= detail.email %></td>
+        <td><%= detail.contact %></td>
+        <td><%= detail.twitter %></td>
+
+    
+        <td>
+          <%= link_to "Delete", detail,
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } ,  class:"btn btn-outline-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Detail", new_detail_path, class:"btn btn-secondary" %>
+
+
+<% else %>
+<h1>hello world</h1>
+
+this is my first ruby page 
+
+<% end %>
+
+

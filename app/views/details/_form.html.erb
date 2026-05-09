@@ -1,0 +1,59 @@
+<%= form_with(model: detail) do |form| %>
+
+  <% if detail.errors.any? %>
+    <div class="alert alert-danger">
+      <h2>
+        <%= pluralize(detail.errors.count, "error") %> prohibited this detail from being saved:
+      </h2>
+
+      <ul>
+        <% detail.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.text_field :first_name,
+        class: "form-control",
+        placeholder: "Enter First Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :last_name,
+        class: "form-control",
+        placeholder: "Enter Last Name" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.email_field :email,
+        class: "form-control",
+        placeholder: "Enter Email" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :contact,
+        class: "form-control",
+        placeholder: "Enter Contact Number" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.text_field :twitter,
+        class: "form-control",
+        placeholder: "Enter Twitter Username" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.number_field :user_id,
+    id: :detail_user_id,
+        class: "form-control", 
+        placeholder: "Enter User ID", value:current_user.id , type: :hidden%>
+  </div>
+  
+
+  <div>
+    <%= form.submit "Save Detail", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
