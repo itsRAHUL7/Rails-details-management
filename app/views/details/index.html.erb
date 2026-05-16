@@ -20,14 +20,13 @@
     <% @details.each do |detail| %>
       <tr>
         <td>
-        <%= link_to detail.full_name %>
+        <%= link_to detail.full_name, detail %>
         </td>
         <td><%= detail.email %></td>
         <td><%= detail.contact %></td>
         <td><%= detail.twitter %></td>
-
-    
         <td>
+
           <%= link_to "Delete", detail,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } ,  class:"btn btn-outline-danger btn-sm" %>
         </td>
